@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 13% 10%; /* Very dark charcoal */
+    --foreground: 210 40% 98%; /* Off-white */
+
+    --card: 220 13% 15%; /* Slightly lighter dark charcoal for cards */
+    --card-foreground: 210 40% 98%; /* Off-white */
+
+    --popover: 220 13% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%; /* Off-white for main headlines/text */
+    --primary-foreground: 222.2 84% 4.9%; /* Slate-900 for text on primary background */
+
+    --secondary: 220 13% 20%; /* Darker gray for secondary backgrounds */
+    --secondary-foreground: 210 40% 98%; /* Off-white */
+
+    --muted: 220 13% 25%; /* Even darker gray for muted backgrounds */
+    --muted-foreground: 215.4 16.3% 65%; /* Lighter gray for muted text */
+
+    --accent: 180 70% 50%; /* Vibrant Cyan */
+    --accent-foreground: 220 13% 10%; /* Dark text on accent */
+
+    --destructive: 0 84.2% 60.2%; /* Red */
+    --destructive-foreground: 210 40% 98%; /* Off-white */
+
+    --border: 220 13% 30%; /* Subtle dark border */
+    --input: 220 13% 20%; /* Dark input background */
+    --ring: 180 70% 50%; /* Accent color for ring */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 13% 15%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 220 13% 10%;
+    --sidebar-accent: 220 13% 25%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 13% 30%;
+    --sidebar-ring: 180 70% 50%;
+
+    /* Sparkle variables */
+    --sparkle-color: 210 20% 70%; /* Lighter gray for sparkles on dark background */
+
+    /* EV-specific accent color (blue-600) */
+    --ev-accent: 221 83% 53%;
+    --ev-accent-foreground: 210 40% 98%; /* White text on blue accent */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

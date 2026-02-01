@@ -1,0 +1,217 @@
+"use client";
+
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion, Variants } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, ChevronDown } from "lucide-react";
+
+/* ------------------ Motion Variants ------------------ */
+
+const headerVariants: Variants = {
+  hidden: { opacity: 0, y: -40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+/* ------------------ Data ------------------ */
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Contact", href: "/contact" },
+];
+
+const servicesLinks = [
+  { name: "Product Design", href: "/services/product-design" },
+  { name: "Prototyping", href: "/services/prototyping" },
+  { name: "Mass Production", href: "/services/mass-production" },
+];
+
+const sectorsLinks = [
+  { name: "Defence", href: "/sectors/defence" },
+  { name: "EV", href: "/sectors/ev" },
+  { name: "Consumer Electronics", href: "/sectors/consumer-electronics" },
+];
+
+/* ------------------ Component ------------------ */
+
+const Header = () => {
+  return (
+    <motion.header
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
+      className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-md border-b border-accent/20 rounded-b-3xl shadow-lg"
+    >
+      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
+
+        {/* Logo */}
+        <Link
+          to="/"
+          className="text-2xl font-extrabold text-primary hover:text-accent transition-colors"
+        >
+          MLXWORKX
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              className="text-foreground hover:text-accent font-medium transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Services */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-1">
+                Services <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-card border border-border rounded-lg shadow-lg p-1">
+              {servicesLinks.map((link) => (
+                <DropdownMenuItem key={link.name} asChild>
+                  <Link
+                    to={link.href}
+                    className="block px-4 py-2 rounded-md hover:bg-secondary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Sectors */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="flex items-center gap-1">
+                Sectors <ChevronDown className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-48 bg-card border border-border rounded-lg shadow-lg p-1">
+              {sectorsLinks.map((link) => (
+                <DropdownMenuItem key={link.name} asChild>
+                  <Link
+                    to={link.href}
+                    className="block px-4 py-2 rounded-md hover:bg-secondary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* CTA */}
+          <Link to="/contact">
+            <Button size="sm" className="rounded-full">
+              Get Quote
+            </Button>
+          </Link>
+        </nav>
+
+        {/* Mobile Nav */}
+        <Sheet>
+          <SheetTrigger asChild className="md:hidden">
+            <Button variant="ghost" size="icon">
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Toggle navigation</span>
+            </Button>
+          </SheetTrigger>
+
+          <SheetContent
+            side="right"
+            className="w-[260px] sm:w-[300px] bg-card border-l border-accent/20 rounded-l-3xl p-6"
+          >
+            <Link to="/" className="text-2xl font-extrabold text-primary mb-8 block">
+              MLXWORKX
+            </Link>
+
+            <nav className="flex flex-col space-y-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-lg hover:text-accent transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              {/* Mobile Services */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="justify-between text-lg">
+                    Services <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-full bg-secondary border border-border rounded-lg p-1">
+                  {servicesLinks.map((link) => (
+                    <DropdownMenuItem key={link.name} asChild>
+                      <Link
+                        to={link.href}
+                        className="block px-4 py-2 rounded-md hover:bg-muted transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Mobile Sectors */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="justify-between text-lg">
+                    Sectors <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-full bg-secondary border border-border rounded-lg p-1">
+                  {sectorsLinks.map((link) => (
+                    <DropdownMenuItem key={link.name} asChild>
+                      <Link
+                        to={link.href}
+                        className="block px-4 py-2 rounded-md hover:bg-muted transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <Link to="/contact">
+                <Button size="lg" className="mt-4 rounded-full">
+                  Get Quote
+                </Button>
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
+
+      </div>
+    </motion.header>
+  );
+};
+
+export default Header;
