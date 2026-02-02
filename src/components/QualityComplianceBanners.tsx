@@ -73,7 +73,7 @@ const trustIndicators: TrustIndicator[] = [
 
 const QualityComplianceBanners = () => {
   return (
-    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] -mt-12 border-t border-accent/20">
+    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] border-t border-accent/20">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
 
         {/* Heading */}

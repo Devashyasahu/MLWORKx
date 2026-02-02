@@ -14,7 +14,7 @@ const capabilities = [
   {
     category: "Consumer Electronics",
     description: "Sleek, user-centric designs for mass market.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     dimensions: ["CE-002", "Rev A"],
   },
 ];

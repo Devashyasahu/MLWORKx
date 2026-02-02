@@ -9,7 +9,7 @@ const HeroMassProduction = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-accent/20">
       <motion.div
-        className="text-center max-w-5xl mx-auto relative z-10"
+        className="text-center max-w-5xl mx-auto relative z-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const HeroMassProduction = () => {
           viewport={{ once: true }}
         >
           This is where products stop being plans and start becoming shipments.
-          At MLXWORKX, mass production is about scaling without losing control.
+          At MLWORKx, mass production is about scaling without losing control.
         </motion.p>
 
         {/* CTA */}

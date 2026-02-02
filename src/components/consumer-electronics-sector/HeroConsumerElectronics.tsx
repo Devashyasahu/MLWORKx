@@ -9,7 +9,7 @@ const HeroConsumerElectronics = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-accent/20">
       <motion.div
-        className="text-center max-w-5xl mx-auto relative z-10"
+        className="text-center max-w-5xl mx-auto relative z-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const HeroConsumerElectronics = () => {
           viewport={{ once: true }}
         >
           Consumer electronics move fast. Short timelines, high expectations, and
-          little room for error. At MLXWORKX, we support consumer electronics teams
+          little room for error. At MLWORKx, we support consumer electronics teams
           through product design, prototyping, and mass production.
         </motion.p>
 

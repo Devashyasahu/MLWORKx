@@ -35,7 +35,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 text-center max-w-4xl mx-auto px-4"
+        className="relative z-20 text-center max-w-4xl mx-auto px-4"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -53,7 +53,7 @@ const HeroSection = () => {
           variants={itemVariants}
           className="text-lg md:text-xl lg:text-2xl font-medium mb-6 max-w-2xl mx-auto text-foreground"
         >
-          MLXWORKX helps you move from requirement to reliable production through
+          MLWORKx helps you move from requirement to reliable production through
           a trusted manufacturing ecosystem.
         </motion.p>
 

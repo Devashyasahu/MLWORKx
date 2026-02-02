@@ -31,7 +31,7 @@ const services = [
 
 const StrategicSupportEv = () => {
   return (
-    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] -mt-12 relative z-10 border-t border-[var(--ev-accent)]/20">
+    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] relative z-10 border-t border-[var(--ev-accent)]/20">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
 
         {/* Header */}

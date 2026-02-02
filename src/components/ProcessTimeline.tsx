@@ -43,7 +43,7 @@ type ProcessStep = {
 const processSteps: ProcessStep[] = [
   {
     id: "requirement-intake",
-    tag: "// STEP 01",
+    tag: "STEP 01",
     headline: "Requirement Intake",
     description:
       "Collecting technical drawings, CAD files, and specifications to fully understand your needs.",
@@ -51,7 +51,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     id: "supplier-matching",
-    tag: "// STEP 02",
+    tag: "STEP 02",
     headline: "Supplier Matching",
     description:
       "Matching your project with vetted, high-capacity manufacturing partners from our ecosystem.",
@@ -59,7 +59,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     id: "quality-validation",
-    tag: "// STEP 03",
+    tag: "STEP 03",
     headline: "Quality & Validation",
     description:
       "Continuous inspections, testing, and compliance checks at every critical stage.",
@@ -67,7 +67,7 @@ const processSteps: ProcessStep[] = [
   },
   {
     id: "production-delivery",
-    tag: "// STEP 04",
+    tag: "STEP 04",
     headline: "Production & Delivery",
     description:
       "Transparent manufacturing oversight, efficient production, and final delivery logistics.",

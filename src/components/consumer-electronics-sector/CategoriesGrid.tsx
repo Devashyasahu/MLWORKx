@@ -59,8 +59,17 @@ const categories = [
 
 const CategoriesGrid = () => {
   return (
-    <section className="bg-background py-24 md:py-32 rounded-b-[3rem] md:rounded-b-[6rem] relative z-0 border-b border-accent/20">
-      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+  <section
+  className="
+    relative
+    bg-background
+    pt-32 pb-32
+    md:pt-36 md:pb-36
+    border-b border-accent/20
+    overflow-hidden
+  "
+>
+  <div className="container mx-auto px-4 md:px-8 max-w-7xl">
 
         {/* Heading */}
         <motion.div

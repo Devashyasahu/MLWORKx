@@ -31,11 +31,11 @@ const ContactSidebar = () => {
       className="bg-card p-8 rounded-3xl shadow-lg border border-accent/30 flex flex-col h-full"
     >
       <h3 className="text-3xl font-bold text-primary mb-6">
-        About MLXWORKX
+        About MLWORKx
       </h3>
 
       <p className="text-foreground text-base leading-relaxed mb-6">
-        MLXWORKX is a manufacturing services platform designed to simplify
+        MLWORKx is a manufacturing services platform designed to simplify
         sourcing, production, and quality control for innovators. We emphasize
         structured execution, deep manufacturing awareness, and long-term
         partnerships.

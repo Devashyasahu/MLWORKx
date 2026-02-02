@@ -2,62 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================
+   THEME VARIABLES
+   ========================= */
 @layer base {
   :root {
-    --background: 220 13% 10%; /* Very dark charcoal */
-    --foreground: 210 40% 98%; /* Off-white */
+    /* Header height (MUST match Header.tsx height — h-16 = 4rem) */
+    --header-height: 4rem;
 
-    --card: 220 13% 15%; /* Slightly lighter dark charcoal for cards */
-    --card-foreground: 210 40% 98%; /* Off-white */
+    /* Colors */
+    --background: 220 13% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 13% 15%;
+    --card-foreground: 210 40% 98%;
 
     --popover: 220 13% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%; /* Off-white for main headlines/text */
-    --primary-foreground: 222.2 84% 4.9%; /* Slate-900 for text on primary background */
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
 
-    --secondary: 220 13% 20%; /* Darker gray for secondary backgrounds */
-    --secondary-foreground: 210 40% 98%; /* Off-white */
+    --secondary: 220 13% 20%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 13% 25%; /* Even darker gray for muted backgrounds */
-    --muted-foreground: 215.4 16.3% 65%; /* Lighter gray for muted text */
+    --muted: 220 13% 25%;
+    --muted-foreground: 215.4 16.3% 65%;
 
-    --accent: 180 70% 50%; /* Vibrant Cyan */
-    --accent-foreground: 220 13% 10%; /* Dark text on accent */
+    --accent: 180 70% 50%;
+    --accent-foreground: 220 13% 10%;
 
-    --destructive: 0 84.2% 60.2%; /* Red */
-    --destructive-foreground: 210 40% 98%; /* Off-white */
-
-    --border: 220 13% 30%; /* Subtle dark border */
-    --input: 220 13% 20%; /* Dark input background */
-    --ring: 180 70% 50%; /* Accent color for ring */
+    --border: 220 13% 30%;
+    --ring: 180 70% 50%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 220 13% 15%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 210 40% 98%;
-    --sidebar-primary-foreground: 220 13% 10%;
-    --sidebar-accent: 220 13% 25%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 13% 30%;
-    --sidebar-ring: 180 70% 50%;
-
-    /* Sparkle variables */
-    --sparkle-color: 210 20% 70%; /* Lighter gray for sparkles on dark background */
-
-    /* EV-specific accent color (blue-600) */
-    --ev-accent: 221 83% 53%;
-    --ev-accent-foreground: 210 40% 98%; /* White text on blue accent */
   }
 }
 
+/* =========================
+   BASE LAYOUT FIX
+   ========================= */
 @layer base {
-  * {
-    @apply border-border;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    padding-top: var(--header-height); /* ✅ THIS IS THE FIX */
   }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+}
+
+/* =========================
+   SAFETY
+   ========================= */
+header {
+  z-index: 50;
+  height: var(--header-height);
+}
+
+section {
+  position: relative;
 }

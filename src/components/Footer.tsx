@@ -39,10 +39,10 @@ const Footer = () => {
               to="/"
               className="text-3xl font-extrabold text-accent hover:text-accent/80 transition-colors mb-4"
             >
-              MLXWORKX
+              MLWORKx
             </Link>
             <p className="text-muted-foreground leading-relaxed max-w-xs md:max-w-none">
-              MLXWORKX is a manufacturing services platform designed to simplify
+              MLWORKx is a manufacturing services platform designed to simplify
               sourcing, production, and quality control for innovators.
             </p>
           </div>
@@ -111,7 +111,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 md:pt-12 border-t border-accent/30 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} MLXWORKX. All rights reserved.
+            &copy; {new Date().getFullYear()} MLWORKx. All rights reserved.
           </p>
 
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">

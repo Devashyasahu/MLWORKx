@@ -9,7 +9,7 @@ const HeroDefence = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-accent/20">
       <motion.div
-        className="text-center max-w-5xl mx-auto relative z-10"
+          className="text-center max-w-5xl mx-auto relative z-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const HeroDefence = () => {
           viewport={{ once: true }}
         >
           Defence products operate in high-stakes environments. Reliability,
-          consistency, and compliance are not optional. At MLXWORKX, we support
+          consistency, and compliance are not optional. At MLWORKx, we support
           defence and strategic programs through structured product development,
           prototyping, and manufacturing.
         </motion.p>

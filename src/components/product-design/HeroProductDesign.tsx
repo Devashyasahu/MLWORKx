@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const HeroProductDesign = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-accent/20">
-      <div className="text-center max-w-5xl mx-auto relative z-10">
+      <div className="text-center max-w-5xl mx-auto relative z-20">
 
         {/* Heading */}
         <motion.h1

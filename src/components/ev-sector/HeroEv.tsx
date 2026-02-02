@@ -9,7 +9,7 @@ const HeroEv = () => {
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-[var(--ev-accent)]/20">
       <motion.div
-        className="text-center max-w-5xl mx-auto relative z-10"
+        className="text-center max-w-5xl mx-auto relative z-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -34,7 +34,7 @@ const HeroEv = () => {
           transition={{ duration: 0.6, delay: 0.25 }}
           viewport={{ once: true }}
         >
-          Electric vehicle products operate in demanding conditions. They must be reliable, safe, and ready for scale from day one. At MLXWORKX, we support EV teams across product design, prototyping, and mass production.
+          Electric vehicle products operate in demanding conditions. They must be reliable, safe, and ready for scale from day one. At MLWORKx, we support EV teams across product design, prototyping, and mass production.
         </motion.p>
 
         {/* CTA */}

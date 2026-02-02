@@ -32,8 +32,8 @@ const headerVariants: Variants = {
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Contact", href: "/contact" },
+  // { name: "Pricing", href: "/pricing" },
+  // { name: "Contact", href: "/contact" },
 ];
 
 const servicesLinks = [
@@ -56,7 +56,7 @@ const Header = () => {
       variants={headerVariants}
       initial="hidden"
       animate="visible"
-      className="sticky top-0 z-50 w-full bg-background/70 backdrop-blur-md border-b border-accent/20 rounded-b-3xl shadow-lg"
+      className="fixed top-0 left-0 right-0 z-50 w-full bg-background/70 backdrop-blur-md border-b border-accent/20 rounded-b-3xl shadow-lg"
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
 
@@ -65,7 +65,7 @@ const Header = () => {
           to="/"
           className="text-2xl font-extrabold text-primary hover:text-accent transition-colors"
         >
-          MLXWORKX
+          MLWORKx
         </Link>
 
         {/* Desktop Nav */}

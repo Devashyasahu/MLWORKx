@@ -17,52 +17,52 @@ const capabilities = [
   {
     category: "IoT Products",
     description: "WiFi/GSM gateways, sensors, smart tracking.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: Lightbulb,
   },
   {
     category: "Consumer Electronics",
     description: "Hardware and firmware with export-quality standards.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: CircuitBoard,
   },
   {
     category: "Healthcare & Fitness",
     description: "Medical devices following structured validation (ISO focus).",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: HeartPulse,
   },
   {
     category: "Electric Vehicle (EV)",
     description:
       "Instrument clusters, battery swapping systems, charging units.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: Car,
   },
   {
     category: "Electronics Toys",
     description: "STEM kits and interactive smart products.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: ToyBrick,
   },
   {
     category: "Military-Grade",
     description:
       "Defense-aligned prototypes with technical standards experience.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: Shield,
   },
   {
     category: "Smart Wearables",
     description: "Smartwatches, smart rings, and compact electronics.",
-    image: "/placeholder.svg",
+    image: "/images/robot.jpg",
     icon: Watch,
   },
 ];
 
 const PrototypingCapabilitiesGrid = () => {
   return (
-    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] -mt-12 relative z-10 border-t border-accent/20">
+    <section className="bg-secondary py-24 md:py-32 rounded-t-[3rem] md:rounded-t-[6rem] relative z-10 border-t border-accent/20">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
 
         {/* Heading */}
@@ -107,7 +107,7 @@ const PrototypingCapabilitiesGrid = () => {
 
               {/* Text */}
               <p className="font-mono text-accent text-sm uppercase mb-2">
-                // {cap.category}
+                 {cap.category}
               </p>
               <h3 className="text-2xl font-bold text-primary leading-snug">
                 {cap.description}
