@@ -32,8 +32,6 @@ const headerVariants: Variants = {
 
 const navLinks = [
   { name: "Home", href: "/home" },
-  // { name: "Pricing", href: "/pricing" },
-  // { name: "Contact", href: "/contact" },
 ];
 
 const servicesLinks = [
@@ -62,14 +60,16 @@ const Header = () => {
 
         {/* Logo */}
         <Link
-          to=""
+          to="/home"
           className="text-2xl font-extrabold text-primary hover:text-accent transition-colors"
         >
           MLWORKx
         </Link>
 
-        {/* Desktop Nav */}
+        {/* ---------------- Desktop Nav ---------------- */}
         <nav className="hidden md:flex items-center space-x-6">
+
+          {/* Home */}
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -122,6 +122,14 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
+          {/* Blog (BETWEEN Sectors & CTA) */}
+          <Link
+            to="/blog"
+            className="text-foreground hover:text-accent font-medium transition-colors"
+          >
+            Blog
+          </Link>
+
           {/* CTA */}
           <Link to="/contact">
             <Button size="sm" className="rounded-full">
@@ -130,7 +138,7 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Mobile Nav */}
+        {/* ---------------- Mobile Nav ---------------- */}
         <Sheet>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="ghost" size="icon">
@@ -143,11 +151,16 @@ const Header = () => {
             side="right"
             className="w-[260px] sm:w-[300px] bg-card border-l border-accent/20 rounded-l-3xl p-6"
           >
-            <Link to="/home" className="text-2xl font-extrabold text-primary mb-8 block">
-              MLXWORKX
+            <Link
+              to="/home"
+              className="text-2xl font-extrabold text-primary mb-8 block"
+            >
+              MLWORKx
             </Link>
 
             <nav className="flex flex-col space-y-4">
+
+              {/* Home */}
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -200,6 +213,15 @@ const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
+              {/* Blog */}
+              <Link
+                to="/blog"
+                className="text-lg hover:text-accent transition-colors"
+              >
+                Blog
+              </Link>
+
+              {/* CTA */}
               <Link to="/contact">
                 <Button size="lg" className="mt-4 rounded-full">
                   Get Quote

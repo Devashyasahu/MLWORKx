@@ -13,7 +13,7 @@ const Vlog = () => {
         className="max-w-3xl text-center"
       >
         <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-          MLWORKx Vlog
+          MLWORKx Blog
         </h1>
         <p className="text-muted-foreground text-lg">
           Insights, updates, behind-the-scenes stories, and innovations from

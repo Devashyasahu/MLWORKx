@@ -102,7 +102,7 @@ const DifferentiationGrid = () => {
             variants={itemVariants}
             className="text-lg md:text-xl max-w-4xl mx-auto mt-4 text-muted-foreground"
           >
-            We explain why choosing MLXWORKX beats traditional vendors or generic platforms.
+            We explain why choosing MLWORKx beats traditional vendors or generic platforms.
           </motion.p>
         </motion.div>
 

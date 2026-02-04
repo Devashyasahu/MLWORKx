@@ -95,9 +95,11 @@ const CapabilityGrid = () => {
               <p className="font-mono text-accent text-sm uppercase mb-2">
                 {service.tag}
               </p>
+
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-extrabold uppercase text-primary mb-6 leading-tight">
                 {service.headline}
               </h2>
+
               <p className="text-lg md:text-xl text-foreground leading-relaxed">
                 {service.description}
               </p>
@@ -126,6 +128,7 @@ const CapabilityGrid = () => {
 
 const UltraOptimizedVideo = ({ videoSrc, posterSrc }: VideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const [mounted, setMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasError, setHasError] = useState(false);
