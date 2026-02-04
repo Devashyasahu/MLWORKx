@@ -1,4 +1,6 @@
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App.tsx";
 import "./globals.css";
 
@@ -11,7 +13,13 @@ function updateHeaderHeight() {
 	header.style.height = `var(--header-height)`;
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")!).render(
+	<React.StrictMode>
+		<Router>
+			<App />
+		</Router>
+	</React.StrictMode>
+);
 
 // update after first paint and on resize to handle dynamic content
 window.addEventListener("load", () => requestAnimationFrame(updateHeaderHeight));

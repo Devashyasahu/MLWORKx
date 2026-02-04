@@ -9,7 +9,7 @@ import HeroEv from "@/components/ev-sector/HeroEv";
 import StrategicSupportEv from "@/components/ev-sector/StrategicSupportEv";
 import ApplicationsGridEv from "@/components/ev-sector/ApplicationsGridEv";
 import ApproachDifferentiationEv from "@/components/ev-sector/ApproachDifferentiationEv";
-import EvInquiryForm from "@/components/ev-sector/EvInquiryForm"; // Custom Inquiry Form for this page
+import StartProjectCTA from "@/components/StartProjectCTA";
 
 const EvSectorPage = () => {
   return (
@@ -21,7 +21,7 @@ const EvSectorPage = () => {
         <StrategicSupportEv />
         <ApplicationsGridEv />
         <ApproachDifferentiationEv />
-        <EvInquiryForm />
+        <StartProjectCTA/>
       </main>
       <Footer />
     </div>

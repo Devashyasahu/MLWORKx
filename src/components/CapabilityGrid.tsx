@@ -4,8 +4,8 @@ import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui";
-import { showError } from "@/utils/toast";
 import { Play } from "lucide-react";
+import { showError } from "@/utils/toast";
 
 /* ------------------ Types ------------------ */
 
@@ -17,25 +17,30 @@ interface ServiceItem {
   posterSrc?: string;
 }
 
+interface VideoProps {
+  videoSrc: string;
+  posterSrc?: string;
+}
+
 /* ------------------ Data ------------------ */
 
 const services: ServiceItem[] = [
   {
-    tag: " NODE 01",
+    tag: "NODE 01",
     headline: "CNC Machining",
     description: "Precision parts with predictable lead times.",
     videoSrc: "/videos/video1.mp4",
     posterSrc: "/images/robot.jpg",
   },
   {
-    tag: " NODE 02",
+    tag: "NODE 02",
     headline: "Sheet Metal Fabrication",
     description: "From rapid prototyping to scalable production.",
     videoSrc: "/videos/video2.mp4",
     posterSrc: "/images/robot.jpg",
   },
   {
-    tag: " NODE 03",
+    tag: "NODE 03",
     headline: "Casting & Forging",
     description: "Reliable sourcing with consistent quality control.",
     videoSrc: "/videos/video3.mp4",
@@ -57,7 +62,11 @@ const services: ServiceItem[] = [
   },
 ];
 
-/* ------------------ Component ------------------ */
+/* ------------------ Global Video Lock ------------------ */
+
+let activeVideo: HTMLVideoElement | null = null;
+
+/* ------------------ Main Component ------------------ */
 
 const CapabilityGrid = () => {
   return (
@@ -74,7 +83,7 @@ const CapabilityGrid = () => {
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.5 }}
           >
             {/* Text */}
             <div
@@ -97,11 +106,14 @@ const CapabilityGrid = () => {
             {/* Video */}
             <div
               className={cn(
-                "relative w-full aspect-video rounded-[48px] border-8 border-card shadow-xl overflow-hidden group",
+                "relative w-full aspect-video rounded-[48px] border-8 border-card shadow-xl overflow-hidden",
                 index % 2 === 1 ? "md:order-1" : "md:order-2"
               )}
             >
-              <VideoPlayer videoSrc={service.videoSrc} posterSrc={service.posterSrc} />
+              <UltraOptimizedVideo
+                videoSrc={service.videoSrc}
+                posterSrc={service.posterSrc}
+              />
             </div>
           </motion.div>
         ))}
@@ -110,129 +122,105 @@ const CapabilityGrid = () => {
   );
 };
 
-/* ------------------ Video Player ------------------ */
+/* ------------------ Ultra Optimized Video ------------------ */
 
-interface VideoPlayerProps {
-  videoSrc: string;
-  posterSrc?: string;
-}
-
-const VideoPlayer = ({ videoSrc, posterSrc }: VideoPlayerProps) => {
+const UltraOptimizedVideo = ({ videoSrc, posterSrc }: VideoProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasStartedPlayback, setHasStartedPlayback] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [preloadStarted, setPreloadStarted] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   const isTouch =
     typeof window !== "undefined" &&
     window.matchMedia("(hover: none)").matches;
 
-  // Intersection Observer with 200px margin for early preload
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Auto-play on mobile/touch or when it comes into view
-          if (videoRef.current && !hasError) {
-            videoRef.current.play().catch(() => {
-              // Autoplay might be blocked; user can hover to play
-            });
-            setHasStartedPlayback(true);
-            setIsPlaying(true);
-          }
-        } else {
-          // Pause when out of view (optional, for performance)
-          if (videoRef.current && !isTouch) {
-            videoRef.current.pause();
-            setIsPlaying(false);
-          }
-        }
-      },
-      { 
-        threshold: 0.1,
-        rootMargin: "200px" // Start loading 200px before visible
+  const idle =
+    typeof window !== "undefined" && "requestIdleCallback" in window
+      ? (cb: () => void) =>
+          (window as any).requestIdleCallback(cb)
+      : (cb: () => void) => setTimeout(cb, 200);
+
+  const startPlayback = () => {
+    if (hasError) return;
+
+    setMounted(true);
+
+    idle(() => {
+      if (!videoRef.current) return;
+
+      if (activeVideo && activeVideo !== videoRef.current) {
+        activeVideo.pause();
       }
-    );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasError, isTouch]);
-
-  const play = () => {
-    if (videoRef.current && !hasError) {
-      videoRef.current.play();
-      setHasStartedPlayback(true);
-      setIsPlaying(true);
-    }
+      videoRef.current
+        .play()
+        .then(() => {
+          activeVideo = videoRef.current;
+          setIsPlaying(true);
+        })
+        .catch(() => {});
+    });
   };
 
-  const pause = () => {
-    if (videoRef.current && !hasError) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handlePlayButtonClick = () => {
-    play();
+  const stopPlayback = () => {
+    if (!videoRef.current) return;
+    videoRef.current.pause();
+    setIsPlaying(false);
   };
 
   return (
-    <div className="relative w-full h-full" ref={containerRef}>
-      {isLoading && (
-        <Skeleton className="absolute inset-0 w-full h-full rounded-[40px]" />
-      )}
-
-      {hasError ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-destructive/10 text-destructive rounded-[40px]">
-          <p className="text-sm font-medium">Video failed to load</p>
-        </div>
-      ) : (
+    <div className="relative w-full h-full bg-black/5">
+      {/* Poster only */}
+      {!mounted && posterSrc && (
         <>
-          <video
-            ref={videoRef}
-            src={isVisible ? videoSrc : undefined}
-            poster={posterSrc}
-            loop
-            muted
-            playsInline
-            preload={isVisible ? "auto" : "metadata"}
-            className={cn(
-              "absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500",
-              isLoading ? "opacity-0" : "opacity-100"
-            )}
-            onLoadedData={() => setIsLoading(false)}
-            onError={() => {
-              setHasError(true);
-              setIsLoading(false);
-              showError(`Failed to load video: ${videoSrc}`);
-            }}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
+          <img
+            src={posterSrc}
+            alt="Capability preview"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover grayscale"
           />
 
-          {/* Play Button Overlay - Always Visible Until Playing */}
-          {!isPlaying && !isLoading && (
-            <button
-              onClick={handlePlayButtonClick}
-              type="button"
-              className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-all duration-300 cursor-pointer"
-              aria-label="Play video"
-            >
-              <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
-                <Play className="w-8 h-8 text-accent-foreground fill-accent-foreground" />
-              </div>
-            </button>
-          )}
+          <button
+            onClick={startPlayback}
+            className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition"
+            aria-label="Play video"
+          >
+            <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+              <Play className="w-8 h-8 text-accent-foreground fill-accent-foreground" />
+            </div>
+          </button>
         </>
+      )}
+
+      {/* Video mounts only after interaction */}
+      {mounted && !hasError && (
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          muted
+          loop
+          playsInline
+          preload="none"
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover transition-all duration-500",
+            isPlaying ? "grayscale-0" : "grayscale"
+          )}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onError={() => {
+            setHasError(true);
+            showError("Failed to load video");
+          }}
+          onMouseEnter={!isTouch ? startPlayback : undefined}
+          onMouseLeave={!isTouch ? stopPlayback : undefined}
+        />
+      )}
+
+      {/* Error fallback */}
+      {hasError && (
+        <div className="absolute inset-0 flex items-center justify-center text-destructive text-sm">
+          Video unavailable
+        </div>
       )}
     </div>
   );

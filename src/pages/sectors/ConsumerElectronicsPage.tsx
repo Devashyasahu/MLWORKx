@@ -9,7 +9,7 @@ import HeroConsumerElectronics from "@/components/consumer-electronics-sector/He
 import SupportLifecycle from "@/components/consumer-electronics-sector/SupportLifecycle";
 import CategoriesGrid from "@/components/consumer-electronics-sector/CategoriesGrid";
 import ApproachDifferentiationCe from "@/components/consumer-electronics-sector/ApproachDifferentiationCe";
-import CeInquiryForm from "@/components/consumer-electronics-sector/CeInquiryForm"; // Custom Inquiry Form for this page
+import StartProjectCTA from "@/components/StartProjectCTA"; // Custom Inquiry Form for this page
 
 const ConsumerElectronicsPage = () => {
   return (
@@ -21,7 +21,7 @@ const ConsumerElectronicsPage = () => {
         <SupportLifecycle />
         <CategoriesGrid />
         <ApproachDifferentiationCe />
-        <CeInquiryForm />
+        <StartProjectCTA/>
       </main>
       <Footer />
     </div>

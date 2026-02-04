@@ -57,7 +57,59 @@
     border-color: hsl(var(--border));
   }
 }
+/* Rotating border card */
+.rotating-border-card {
+  position: relative;
+  border-radius: 1.5rem; /* match your card radius */
+  overflow: hidden;
+}
 
+.rotating-border-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px; /* border thickness */
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 270deg,
+    hsl(var(--accent)) 300deg,
+    transparent 360deg
+  );
+  animation: rotate-border 2.5s linear infinite;
+  animation-play-state: paused;
+  z-index: 0;
+}
+
+/* Mask so only border is visible */
+.rotating-border-card::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  background: hsl(var(--card));
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* Start animation on hover */
+.rotating-border-card:hover::before {
+  animation-play-state: running;
+}
+
+/* Content stays above */
+.rotating-border-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* =========================
    SAFETY
    ========================= */

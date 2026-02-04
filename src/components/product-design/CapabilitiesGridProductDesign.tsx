@@ -48,27 +48,31 @@ const CapabilitiesGridProductDesign = () => {
           {capabilities.map((cap, i) => (
             <motion.div
               key={cap.category}
-              className="bg-card p-6 rounded-3xl shadow-lg border border-accent/30"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
               viewport={{ once: true }}
             >
-              <div className="w-full h-48 mb-6 rounded-xl overflow-hidden border border-border">
-                <BlueprintImage
-                  src={cap.image}
-                  alt={cap.category}
-                  dimensions={cap.dimensions}
-                />
+              {/* 🔥 ROTATING BORDER WRAPPER */}
+              <div className="rotating-border-card">
+                <div className="bg-card p-6 rounded-3xl shadow-lg border border-accent/30">
+                  <div className="w-full h-48 mb-6 rounded-xl overflow-hidden border border-border">
+                    <BlueprintImage
+                      src={cap.image}
+                      alt={cap.category}
+                      dimensions={cap.dimensions}
+                    />
+                  </div>
+
+                  <p className="font-mono text-accent text-sm uppercase mb-2">
+                    // {cap.category}
+                  </p>
+
+                  <h3 className="text-2xl font-bold text-primary">
+                    {cap.description}
+                  </h3>
+                </div>
               </div>
-
-              <p className="font-mono text-accent text-sm uppercase mb-2">
-                // {cap.category}
-              </p>
-
-              <h3 className="text-2xl font-bold text-primary">
-                {cap.description}
-              </h3>
             </motion.div>
           ))}
         </div>

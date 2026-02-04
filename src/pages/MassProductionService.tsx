@@ -4,7 +4,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
-import InquiryForm from "@/components/InquiryForm";
+import StartProjectCTA from "@/components/StartProjectCTA";
 import HeroMassProduction from "@/components/mass-production/HeroMassProduction";
 import ExecutionCapabilities from "@/components/mass-production/ExecutionCapabilities";
 import SmarterSupplyChain from "@/components/mass-production/SmarterSupplyChain";
@@ -20,7 +20,7 @@ const MassProductionService = () => {
         <ExecutionCapabilities />
         <SmarterSupplyChain />
         <MassProductionTrustDeliverables />
-        <InquiryForm />
+        <StartProjectCTA />
       </main>
       <Footer />
     </div>

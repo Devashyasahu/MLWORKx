@@ -83,28 +83,28 @@ const Footer = () => {
             <h3 className="text-2xl font-bold text-primary mb-6">
               Quick Links
             </h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li>
-                <Link to="/features" className="hover:text-accent transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="hover:text-accent transition-colors">
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-accent transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-accent transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+           <ul className="space-y-3 text-muted-foreground">
+  <li>
+    <Link to="/features" className="hover:text-accent transition-colors">
+      Services
+    </Link>
+  </li>
+  <li>
+    <Link to="/pricing" className="hover:text-accent transition-colors">
+      How It Works
+    </Link>
+  </li>
+  <li>
+    <Link to="/about" className="hover:text-accent transition-colors">
+      About Us
+    </Link>
+  </li>
+  <li>
+    <Link to="/vlog" className="hover:text-accent transition-colors">
+      Vlog
+    </Link>
+  </li>
+</ul>
           </div>
         </div>
 

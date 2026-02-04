@@ -3,6 +3,8 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+
 
 /* ------------------ Motion Variants ------------------ */
 
@@ -26,11 +28,15 @@ const itemVariants: Variants = {
 /* ------------------ Section ------------------ */
 
 const HeroSection = () => {
+  const handleScroll = () => {
+    const section = document.getElementById("how-it-works");
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-accent/20">
-
       {/* Background */}
-      <div className="absolute inset-0 bg-[url('/images/robot.jpg')] bg-cover bg-center" />
+      <div className="absolute inset-0 bg-[url('/images/mainimage.jpeg')] bg-cover bg-center" />
       <div className="absolute inset-0 bg-background/70" />
 
       {/* Content */}
@@ -68,14 +74,19 @@ const HeroSection = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row justify-center gap-4"
         >
-          <Button size="lg" className="rounded-full px-8 md:px-10">
-            Start a manufacturing inquiry
-          </Button>
+          {/* Primary CTA → Start Project Form Page */}
+          <Link to="/start-project">
+            <Button size="lg" className="rounded-full px-8 md:px-10">
+              Start a manufacturing inquiry
+            </Button>
+          </Link>
 
+          {/* Secondary CTA → Scroll */}
           <Button
             size="lg"
             variant="outline"
             className="rounded-full px-8 md:px-10"
+            onClick={handleScroll}
           >
             See how it works
           </Button>

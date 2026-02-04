@@ -31,21 +31,21 @@ const headerVariants: Variants = {
 /* ------------------ Data ------------------ */
 
 const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "/home" },
   // { name: "Pricing", href: "/pricing" },
   // { name: "Contact", href: "/contact" },
 ];
 
 const servicesLinks = [
+  { name: "Mass Production", href: "/services/mass-production" },
   { name: "Product Design", href: "/services/product-design" },
   { name: "Prototyping", href: "/services/prototyping" },
-  { name: "Mass Production", href: "/services/mass-production" },
 ];
 
 const sectorsLinks = [
+  { name: "Consumer Electronics", href: "/sectors/consumer-electronics" },
   { name: "Defence", href: "/sectors/defence" },
   { name: "EV", href: "/sectors/ev" },
-  { name: "Consumer Electronics", href: "/sectors/consumer-electronics" },
 ];
 
 /* ------------------ Component ------------------ */
@@ -62,7 +62,7 @@ const Header = () => {
 
         {/* Logo */}
         <Link
-          to="/"
+          to=""
           className="text-2xl font-extrabold text-primary hover:text-accent transition-colors"
         >
           MLWORKx
@@ -143,7 +143,7 @@ const Header = () => {
             side="right"
             className="w-[260px] sm:w-[300px] bg-card border-l border-accent/20 rounded-l-3xl p-6"
           >
-            <Link to="/" className="text-2xl font-extrabold text-primary mb-8 block">
+            <Link to="/home" className="text-2xl font-extrabold text-primary mb-8 block">
               MLXWORKX
             </Link>
 

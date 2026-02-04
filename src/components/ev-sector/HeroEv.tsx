@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const HeroEv = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-[var(--ev-accent)]/20">
+    <section id="ev-hero" className="relative min-h-[80vh] flex items-center justify-center bg-background text-foreground p-4 overflow-hidden rounded-b-[3rem] md:rounded-b-[6rem] border-b border-[var(--ev-accent)]/20">
       <motion.div
         className="text-center max-w-5xl mx-auto relative z-20"
         initial={{ opacity: 0, y: 40 }}
@@ -37,30 +37,12 @@ const HeroEv = () => {
           Electric vehicle products operate in demanding conditions. They must be reliable, safe, and ready for scale from day one. At MLWORKx, we support EV teams across product design, prototyping, and mass production.
         </motion.p>
 
-        {/* CTA */}
+        {/* EV Challenges Section (moved before CTA for better flow) */}
         <motion.div
-          className="flex flex-col sm:flex-row justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <Link to="#inquiry-form">
-            <Button
-              size="lg"
-              className="bg-[var(--ev-accent)] text-[var(--ev-accent-foreground)] hover:bg-[var(--ev-accent)]/80 px-8 py-3 md:px-10 md:py-4 text-lg md:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Start a conversation
-            </Button>
-          </Link>
-        </motion.div>
-
-        {/* EV Challenges Section */}
-        <motion.div
-          className="mt-20 md:mt-24"
+          className="mt-12 md:mt-16"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -74,6 +56,22 @@ const HeroEv = () => {
             . Small issues at early stages turn into large risks at scale,
             demanding precision and foresight.
           </p>
+        </motion.div>
+
+        {/* CTA (placed after challenges) */}
+        <motion.div
+          className="flex flex-col sm:flex-row justify-center gap-4 mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          viewport={{ once: true }}
+        >
+          {/* Primary CTA → Start Project Form Page */}
+          <Link to="/start-project">
+            <Button size="lg" className="rounded-full px-8 md:px-10">
+              Start an EV inquiry
+            </Button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

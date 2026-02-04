@@ -8,7 +8,7 @@ import HeroDefence from "@/components/defence-sector/HeroDefence";
 import StrategicSupport from "@/components/defence-sector/StrategicSupport";
 import ApplicationsGrid from "@/components/defence-sector/ApplicationsGrid";
 import ApproachDifferentiation from "@/components/defence-sector/ApproachDifferentiation";
-import DefenceInquiryForm from "@/components/defence-sector/DefenceInquiryForm"; // Custom Inquiry Form for this page
+import StartProjectCTA from "@/components/StartProjectCTA"; // Custom Inquiry Form for this page
 
 const DefenceSectorPage = () => {
   return (
@@ -20,7 +20,7 @@ const DefenceSectorPage = () => {
         <StrategicSupport />
         <ApplicationsGrid />
         <ApproachDifferentiation />
-        <DefenceInquiryForm />
+        <StartProjectCTA/>
       </main>
       <Footer />
     </div>

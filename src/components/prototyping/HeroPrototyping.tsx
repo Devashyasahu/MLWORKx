@@ -42,7 +42,7 @@ const HeroPrototyping = () => {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true, amount: 0.4 }}
         >
-          <Link to="#inquiry-form">
+          <Link to="/start-project">
             <Button
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/80 px-8 py-3 md:px-10 md:py-4 text-lg md:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"

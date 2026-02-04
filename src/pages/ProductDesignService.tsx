@@ -4,7 +4,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
-import InquiryForm from "@/components/InquiryForm";
+import StartProjectCTA from "@/components/StartProjectCTA";
 import HeroProductDesign from "@/components/product-design/HeroProductDesign";
 import CapabilitiesGridProductDesign from "@/components/product-design/CapabilitiesGridProductDesign";
 import DesignProcessTimeline from "@/components/product-design/DesignProcessTimeline";
@@ -20,7 +20,7 @@ const ProductDesignService = () => {
         <CapabilitiesGridProductDesign />
         <DesignProcessTimeline />
         <TrustDeliverables />
-        <InquiryForm />
+        <StartProjectCTA />
       </main>
       <Footer />
     </div>

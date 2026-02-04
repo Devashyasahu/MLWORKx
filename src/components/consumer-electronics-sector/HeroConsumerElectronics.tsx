@@ -47,7 +47,7 @@ const HeroConsumerElectronics = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <Link to="#inquiry-form">
+          <Link to=" /start-project">
             <Button
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/80 px-8 py-3 md:px-10 md:py-4 text-lg md:text-xl font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"

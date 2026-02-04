@@ -4,7 +4,7 @@ import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SparkleBackground from "@/components/SparkleBackground";
-import InquiryForm from "@/components/InquiryForm";
+import StartProjectCTA from "@/components/StartProjectCTA";
 import HeroPrototyping from "@/components/prototyping/HeroPrototyping";
 import PrototypingCapabilitiesGrid from "@/components/prototyping/PrototypingCapabilitiesGrid";
 import BuildProcessTimeline from "@/components/prototyping/BuildProcessTimeline";
@@ -20,7 +20,7 @@ const PrototypingService = () => {
         <PrototypingCapabilitiesGrid />
         <BuildProcessTimeline />
         <PrototypingTrustDeliverables />
-        <InquiryForm />
+        <StartProjectCTA />
       </main>
       <Footer />
     </div>

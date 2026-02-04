@@ -8,7 +8,7 @@ import DifferentiationGrid from "@/components/DifferentiationGrid"; // New Secti
 import QualityComplianceBanners from "@/components/QualityComplianceBanners"; // New Section 5
 import SocialProofSection from "@/components/SocialProofSection"; // New Section 6
 import AboutSummary from "@/components/AboutSummary"; // New Section 7
-import InquiryForm from "@/components/InquiryForm"; // New Section 8
+import StartProjectCTA from "@/components/StartProjectCTA";
 import SparkleBackground from "@/components/SparkleBackground";
 import Footer from "@/components/Footer";
 
@@ -24,7 +24,7 @@ const Index = () => {
       <QualityComplianceBanners />
       <SocialProofSection />
       <AboutSummary />
-      <InquiryForm />
+      <StartProjectCTA />
       <Footer />
     </div>
   );
