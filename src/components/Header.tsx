@@ -31,7 +31,7 @@ const headerVariants: Variants = {
 /* ------------------ Data ------------------ */
 
 const navLinks = [
-  { name: "Home", href: "/home" },
+  { name: "Home", href: "/" },
 ];
 
 const servicesLinks = [
@@ -60,7 +60,7 @@ const Header = () => {
 
         {/* Logo */}
         <Link
-          to="/home"
+          to="/"
           className="text-2xl font-extrabold text-primary hover:text-accent transition-colors"
         >
           MLWORKx
@@ -160,7 +160,7 @@ const Header = () => {
 
             <nav className="flex flex-col space-y-4">
 
-              {/* Home */}
+              {/* / */}
               {navLinks.map((link) => (
                 <Link
                   key={link.name}

@@ -6,35 +6,35 @@ import { cn } from "@/lib/utils";
 /* ------------------ DATA ------------------ */
 
 const services = [
+  // {
+  //   tag: "NODE 01",
+  //   headline: "Service Blocks",
+  //   description:
+  //     " Whether you’re shaping an idea, validating a prototype, or scaling production, MLWORKX supports you at the stage you’re in.",
+  //   videoSrc: "/videos/video1.mp4",
+  //   posterSrc: "/images/robot.jpg",
+  // },
   {
     tag: "NODE 01",
-    headline: "CNC Machining",
-    description:
-      "High-precision machined components with predictable lead times and strict tolerance control.",
-    videoSrc: "/videos/video1.mp4",
-    posterSrc: "/images/robot.jpg",
-  },
-  {
-    tag: "NODE 02",
-    headline: "Sheet Metal Fabrication",
+    headline: "Product Design",
     description:
       "Laser cutting, bending, and forming solutions for scalable industrial production.",
     videoSrc: "/videos/video2.mp4",
     posterSrc: "/images/robot.jpg",
   },
   {
-    tag: "NODE 03",
-    headline: "Casting & Forging",
+    tag: "NODE 02",
+    headline: "Prototyping",
     description:
-      "Reliable sourcing of cast and forged components with consistent quality assurance.",
+      " Build and test working prototypes to validate performance, reliability, and readiness.",
     videoSrc: "/videos/video3.mp4",
     posterSrc: "/images/robot.jpg",
   },
   {
-    tag: "NODE 04",
-    headline: "Assembly & Finishing",
+    tag: "NODE 03",
+    headline: "Mass Production",
     description:
-      "End-to-end mechanical assembly and surface finishing for production-ready systems.",
+      "Scale manufacturing with vetted suppliers, quality oversight, and supply chain coordination.",
     videoSrc: "/videos/video4.mp4",
     posterSrc: "/images/robot.jpg",
   },
