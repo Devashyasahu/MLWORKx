@@ -7,10 +7,8 @@
    ========================= */
 @layer base {
   :root {
-    /* Header height (MUST match Header.tsx height) */
     --header-height: 4rem;
 
-    /* Core colors */
     --background: 220 13% 10%;
     --foreground: 210 40% 98%;
 
@@ -40,17 +38,34 @@
 }
 
 /* =========================
-   BASE LAYOUT SAFETY
+   GLOBAL VIDEO SUPPORT
    ========================= */
 @layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: hsl(var(--background));
+    background: transparent; /* 🔥 Allows video to be visible */
     color: hsl(var(--foreground));
-    padding-top: var(--header-height); /* Prevent header overlap */
+    padding-top: var(--header-height);
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Optional subtle fallback color if video fails */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: hsl(var(--background));
+    z-index: -60;
   }
 
   * {
@@ -59,12 +74,36 @@
 
   section {
     position: relative;
+    z-index: 10; /* Ensures sections stay above video */
   }
 
   header {
     z-index: 50;
     height: var(--header-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
   }
+}
+
+/* =========================
+   CARD SYSTEM (SAFE)
+   ========================= */
+
+/* Ensures cards remain solid above video */
+.card,
+.timeline-card,
+.rotating-border-card,
+.diff-card,
+.trust-card,
+.social-card,
+.about-card,
+.standard-card,
+.capability-card {
+  background: hsl(var(--card));
+  backdrop-filter: blur(0px);
+  position: relative;
+  z-index: 20;
 }
 
 /* =========================
@@ -130,13 +169,15 @@
   transform: translateY(0);
 }
 
-.reveal-video-left, .reveal-text-left {
+.reveal-video-left,
+.reveal-text-left {
   opacity: 0;
   transform: translateX(-80px);
   transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-.reveal-video-right, .reveal-text-right {
+.reveal-video-right,
+.reveal-text-right {
   opacity: 0;
   transform: translateX(80px);
   transition: transform 0.8s ease, opacity 0.8s ease;
@@ -151,181 +192,20 @@
 }
 
 /* =========================
-   PROCESS TIMELINE
+   REDUCED MOTION SAFETY
    ========================= */
-.timeline {
-  position: relative;
-  max-width: 72rem;
-  margin: 0 auto;
-}
-
-.timeline-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 2px;
-  height: 0;
-  background: hsl(var(--border));
-  transform: translateX(-50%);
-  transition: height 0.6s ease-out;
-}
-
-.timeline-line.is-visible {
-  height: 100%;
-}
-
-.timeline-line-glow {
-  background: linear-gradient(to bottom, hsl(var(--accent)), hsl(var(--border)));
-  box-shadow: 0 0 12px hsl(var(--accent) / 0.35), 0 0 32px hsl(var(--accent) / 0.2);
-}
-
-.timeline-item {
-  position: relative;
-  display: flex;
-  margin-bottom: 6rem;
-}
-
-.timeline-item.left { justify-content: flex-end; }
-.timeline-item.right { justify-content: flex-start; }
-
-.timeline-card {
-  width: 100%;
-  max-width: 26rem;
-  background: hsl(var(--card));
-  border-radius: 1.25rem;
-  padding: 2rem;
-  border: 1px solid hsl(var(--border));
-  transform-style: preserve-3d;
-  transform: rotateY(90deg);
-  opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
-}
-
-.timeline-card.is-visible {
-  transform: rotateY(0deg);
-  opacity: 1;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: 50%;
-  width: 14px;
-  height: 14px;
-  background: hsl(var(--accent));
-  border-radius: 9999px;
-  transform: translateX(-50%);
-  top: 1.25rem;
-}
-
-.timeline-glow:hover {
-  box-shadow: 0 0 0 1px hsl(var(--accent) / 0.4), 0 0 24px hsl(var(--accent) / 0.25);
-  transform: translateZ(0) scale(1.015);
-}
-
-/* =========================
-   CARD HOVER SYSTEMS
-   (Diff, Trust, Social, About, Standard)
-   ========================= */
-.diff-card, .trust-card, .social-card, .about-card, .standard-card, .card-hover-glow {
-  position: relative;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-}
-
-.diff-card::before, .trust-card::before, .social-card::before, .about-card::before, .standard-card::before, .card-hover-glow::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, transparent 40%, hsl(var(--accent)) 50%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-}
-
-.diff-card:hover, .trust-card:hover, .social-card:hover, .about-card:hover, .standard-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  border-color: hsl(var(--accent) / 0.4);
-  box-shadow: 0 0 0 1px hsl(var(--accent) / 0.25), 0 0 24px hsl(var(--accent) / 0.18);
-}
-
-.diff-card:hover::before, .trust-card:hover::before, .social-card:hover::before, .about-card:hover::before, .standard-card:hover::before {
-  opacity: 1;
-}
-
-/* =========================
-   HERO SYSTEM SIGNAL
-   ========================= */
-.hero-signal {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-signal-track {
-  display: flex;
-  gap: 3rem;
-  width: max-content;
-  animation: hero-signal-move 22s linear infinite;
-}
-
-@keyframes hero-signal-move {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.hero-signal-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 9999px;
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--accent) / 0.25);
-  white-space: nowrap;
-  font-weight: 600;
-}
-
-/* =========================
-   CAPABILITY CARDS
-   ========================= */
-.capability-card {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.capability-card:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 0 1px hsl(var(--accent) / 0.35), 0 0 32px hsl(var(--accent) / 0.25);
-}
-
-.capability-image {
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-.capability-card:hover .capability-image {
-  transform: scale(1.15);
-  opacity: 0.9;
-}
-
-/* =========================
-   UTILITIES & ACCESSIBILITY
-   ========================= */
-.perspective-\[1200px\] { perspective: 1200px; }
-.transform-style-preserve-3d { transform-style: preserve-3d; }
-.backface-hidden { backface-visibility: hidden; }
-.rotate-y-180 { transform: rotateY(180deg); }
-
-@media (max-width: 768px) {
-  .timeline-line, .timeline-dot { left: 0.75rem; }
-  .timeline-item { justify-content: flex-start; }
-  .timeline-card { margin-left: 2.5rem; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .reveal-card, .reveal-video-left, .reveal-video-right, .reveal-text-left, .reveal-text-right {
+  .reveal-card,
+  .reveal-video-left,
+  .reveal-video-right,
+  .reveal-text-left,
+  .reveal-text-right {
     transition: none;
     transform: none;
     opacity: 1;
   }
-  .rotating-border-card::before { animation: none; }
+
+  .rotating-border-card::before {
+    animation: none;
+  }
 }

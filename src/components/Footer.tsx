@@ -100,8 +100,8 @@ const Footer = () => {
     </Link>
   </li>
   <li>
-    <Link to="/vlog" className="hover:text-accent transition-colors">
-      Vlog
+    <Link to="/blog" className="hover:text-accent transition-colors">
+      Blog
     </Link>
   </li>
 </ul>
